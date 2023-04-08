@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar class="ion-color-transparent" class="my-toolbar">
+    <ion-buttons class="ion-margin-start">
+      <ion-back-button text="" icon="assets/svg/back.svg" defaultHref="/home"> </ion-back-button>
+    </ion-buttons>
+      </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-img id="imagen-principal" src="assets/{{personaje.imagePath}}"></ion-img>
+  <div class="contenedor-info">
+    <p>{{personaje.alterEgo}}</p>
+    <h1>{{personaje.name}}</h1>
+    <div class="contenedor-iconos">
+      <div id="icon1">
+        <ion-img src="assets/svg/age.svg"></ion-img>
+        <p>{{resultEdad}}</p>
+      </div>
+      <div id="icon2">
+        <ion-img src="assets/svg/weight.svg"></ion-img>
+        <p>{{resultPeso}}</p>
+      </div>
+      <div id="icon3">
+        <ion-img src="assets/svg/height.svg"></ion-img>
+        <p>{{resultAltura}}</p>
+      </div>
+      <div id="icon4">
+        <ion-img src="assets/svg/universe.svg"></ion-img>
+        <p>{{personaje.caracteristics.universe}}</p>
+      </div>
+    </div>
+    <div class="contenedor-muchotexto">
+      <p class="texto1">
+        {{personaje.biography}}
+      </p>
+    </div>
+    <h1 id="habilidades">Habilidades</h1>
+    <div class="contenedorHabilidades">
+      <div class="habilidades-columna-texto">
+        <h2>Força</h2>
+        <h2>Inteligência</h2>
+        <h2>Agilidade</h2>
+        <h2>Resistência</h2>
+        <h2>Velocidade</h2>
+      </div>
+      <div class="habilidades-columna-progreso">
+        <ion-progress-bar buffer="buffer" id="progressBar" [value]="personaje.abilities.force/100"></ion-progress-bar>
+        <ion-progress-bar buffer="buffer" id="progressBar"
+          [value]="personaje.abilities.intelligence/100"></ion-progress-bar>
+        <ion-progress-bar buffer="buffer" id="progressBar" [value]="personaje.abilities.agility/100"></ion-progress-bar>
+        <ion-progress-bar buffer="buffer" id="progressBar"
+          [value]="personaje.abilities.endurance/100"></ion-progress-bar>
+        <ion-progress-bar buffer="buffer" id="progressBar"
+          [value]="personaje.abilities.velocity/100"></ion-progress-bar>
+      </div>
+    </div>
+    <h1 class="films">Filmes</h1>
+    <div class="carrusel-filmes">
+      <div class="carrusel-slide" *ngFor="let filme of personaje.movies">
+        <img src="assets/{{ filme }}" alt="{{ filme }}" />
+      </div>
+    </div>
+  </div>
+  
+</ion-content>

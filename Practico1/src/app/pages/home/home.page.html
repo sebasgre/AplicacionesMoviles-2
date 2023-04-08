@@ -1,0 +1,124 @@
+<app-menu></app-menu>
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button>
+          <ion-img src="assets/svg/menu.svg" id="barra-menu">
+          </ion-img>
+        </ion-menu-button>
+      </ion-buttons>
+      <ion-menu-button id="degradadoMarvel">
+        <ion-img src="assets/svg/marvel.svg">
+        </ion-img>
+      </ion-menu-button>
+      <ion-buttons slot="end">
+        <ion-button (click)="showSearch()">
+          <ion-img src="assets/svg/search.svg" id="barra-search"></ion-img>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar *ngIf="showSearchBar">
+      <ion-searchbar placeholder="Buscar personajes" (ionChange)="searchChanged($event)"></ion-searchbar>
+    </ion-toolbar>
+    
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <div class="carrusel-container">
+      <div class="carrusel-slide" (click) = "verPersonaje(result)" *ngFor="let result of searchResults">
+        <img src="assets/{{ result.imagePath }}" alt="{{result.name}}" />
+        <p class="alterEgo">{{result.alterEgo}}</p>
+        <p class="name">{{result.name}}</p>
+      </div>
+    </div>
+    
+    <div id="contenido">
+      <p>Bem vindo ao Marvel Heroes</p>
+      <h1>Escolha o seu personagem</h1>
+    </div>
+    <div id="categorias">
+      <div class="circulos1" (click)="filtrarCategorias('heroes')">
+        <img src="assets/svg/hero.svg" alt="hero.svg">
+      </div>
+      <div class="circulos2" (click)="filtrarCategorias('villains')">
+        <img src="assets/svg/villain.svg" alt="villain.svg">
+      </div>
+      <div class="circulos3" (click)="filtrarCategorias('antiheroes')">
+        <img src="assets/svg/antihero.svg" alt="antihero.svg">
+      </div>
+      <div class="circulos4" (click)="filtrarCategorias('aliens')">
+        <img src="assets/svg/alien.svg" alt="alien.svg">
+      </div>
+      <div class="circulos5" (click)="filtrarCategorias('humans')">
+        <img src="assets/svg/human.svg" alt="human.svg">
+      </div>
+    </div>
+    
+    
+    <div id="seccionHeroes">
+      <p id="herois">Herois</p>
+      <p id="info1">Ver tudo</p>
+    </div>
+    <div class="carrusel-container">
+      <div class="carrusel-slide" *ngFor="let personaje of personajes.heroes" (click)="verPersonaje(personaje)">
+        <img src="assets/{{ personaje.imagePath }}" alt="{{personaje.name}}" />
+        <div class="carrusel-text">
+          <p id="texto1">{{personaje.alterEgo}}</p>
+          <p id="texto2">{{personaje.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div id="seccionVillanos">
+      <p id="villanos">Viloes</p>
+      <p id="info2">Ver tudo</p>
+    </div>
+    <div class="carrusel-container">
+      <div class="carrusel-slide" *ngFor="let personaje of personajes.villains" (click)="verPersonaje(personaje)">
+        <img src="assets/{{ personaje.imagePath }}" alt="{{personaje.name}}" />
+        <div class="carrusel-text">
+          <p id="texto1">{{personaje.alterEgo}}</p>
+          <p id="texto2">{{personaje.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div id="seccionAntiHeroes">
+      <p id="antiHeroes">Anti Herois</p>
+      <p id="info3">Ver tudo</p>
+    </div>
+    <div class="carrusel-container">
+      <div class="carrusel-slide" *ngFor="let personaje of personajes.antiHeroes" (click)="verPersonaje(personaje)">
+        <img src="assets/{{ personaje.imagePath }}" alt="{{personaje.name}}" />
+        <div class="carrusel-text">
+          <p id="texto1">{{personaje.alterEgo}}</p>
+          <p id="texto2">{{personaje.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div id="seccionAliens">
+      <p id="aliens">Aliens</p>
+      <p id="info4">Ver tudo</p>
+    </div>
+    <div class="carrusel-container">
+      <div class="carrusel-slide" *ngFor="let personaje of personajes.aliens" (click)="verPersonaje(personaje)">
+        <img src="assets/{{ personaje.imagePath }}" alt="{{personaje.name}}" />
+        <div class="carrusel-text">
+          <p id="texto1">{{personaje.alterEgo}}</p>
+          <p id="texto2">{{personaje.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div id="seccionHumanos">
+      <p id="humanos">Humanos</p>
+      <p id="info5">Ver tudo</p>
+    </div>
+    <div class="carrusel-container">
+      <div class="carrusel-slide" *ngFor="let personaje of personajes.humans" (click)="verPersonaje(personaje)">
+        <img src="assets/{{ personaje.imagePath }}" alt="{{personaje.name}}" />
+        <div class="carrusel-text">
+          <p id="texto1">{{personaje.alterEgo}}</p>
+          <p id="texto2">{{personaje.name}}</p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</div>
