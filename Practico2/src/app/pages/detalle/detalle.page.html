@@ -1,0 +1,108 @@
+<ion-content [fullscreen]="true">
+  <ion-toolbar class="contenedor_toolBar">
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-card *ngIf="pokemon">
+    <ion-card-header>
+      Pokedex Data
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Species:</ion-label>
+          <ion-text>{{ speciesName }}</ion-text>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label>Height:</ion-label>
+          <ion-text>{{ pokemon.height }} m</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Weight:</ion-label>
+          <ion-text>{{ pokemon.weight }} kg</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Abilities:</ion-label>
+          <ion-text>
+            <ng-container *ngFor="let ability of pokemon?.abilities; let last = last">
+              {{ ability.is_hidden ? ability.ability.name + ' (hidden ability)' : ability.ability.name }}
+              <ng-container *ngIf="!last"><br></ng-container>
+            </ng-container>
+          </ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Weaknesses:</ion-label>
+          <ion-icon *ngFor="let weakness of weaknesses"
+            [name]="'assets/types/' + weakness.toLowerCase() + '.svg'"></ion-icon>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="pokemon">
+    <ion-card-header>
+      Training
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>EV Yield</ion-label>
+          <ion-text>{{ get_EV_Yield(pokemon) }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Catch Rate</ion-label>
+          <ion-text>{{ catch_rate }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Base Friendship</ion-label>
+          <ion-text>{{ base_friendship }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Base Exp</ion-label>
+          <ion-text>{{ pokemon.base_experience }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Growth Rate</ion-label>
+          <ion-text>{{ growth_rate }}</ion-text>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="pokemon">
+    <ion-card-header>
+      Breeding
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>Gender</ion-label>
+          <ion-text></ion-text>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
